@@ -1,4 +1,4 @@
-<p>All Poster!</p>
+<!-- <p>All Poster!</p>
 <div class="">
         <h1>Details</h1>
         <div *ngFor="let item of result" class = "Details">
@@ -6,4 +6,29 @@
             {{item.content}}
             {{item.dateAdded}}
         </div>
-</div>
+</div> -->
+
+<main>
+    <section class="container">
+        <table *ngIf="result">
+           
+            <ng-container *ngFor="let item of result">
+                <div class="title-container">
+                    <div>
+                            "Name-placeholder"
+                    </div>
+                    <span class = "title-container__date">
+                            {{item.dateAdded | date: 'longDate'}}
+                    </span>
+                </div>
+                <div class = "content-container">
+                    <div class="poster-content" [innerHTML] = "item.content"></div>
+                </div>
+                <img src={{item.pictures}} alt="">
+                <button type = "button" class="btn"(click)="delete(item)">delete</button>
+            </ng-container>
+
+
+        </table>
+    </section>
+</main>
