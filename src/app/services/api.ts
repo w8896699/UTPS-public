@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/observable';
 import { HttpClient, HttpResponse, HttpHeaders  } from '@angular/common/http'
+import { Poster } from 'src/app/models/poster'
 @Injectable({
   providedIn: 'root'
 })
@@ -23,6 +24,12 @@ export class ApiService {
 
     getAllPoster(): Observable<any[]> {
       const queryString = 'allposters';
-      return this.http.get<any[]>(`${this.apiPath}/${queryString}`, {});
+      return this.http.get<Poster[]>(`${this.apiPath}/${queryString}`, {});
+    }
+    deletePoster(poster: Poster){
+      const queryString = `allposters/${poster._id}`;
+      const full = this.http.delete<Poster>(`${this.apiPath}/${queryString}`, {});
+      console.log('full request is', full);
+      return full;
     }
   }
