@@ -28,8 +28,10 @@ export class ApiService {
     }
     deletePoster(poster: Poster){
       const queryString = `allposters/${poster._id}`;
-      const full = this.http.delete<Poster>(`${this.apiPath}/${queryString}`, {});
-      console.log('full request is', full);
-      return full;
+      return this.http.delete<Poster>(`${this.apiPath}/${queryString}`, {});;
+    }
+    addPoster(poster: Poster){
+      const queryString = `allposters`;
+      return this.http.post<Poster>(`${this.apiPath}/${queryString}`, poster, {});
     }
   }

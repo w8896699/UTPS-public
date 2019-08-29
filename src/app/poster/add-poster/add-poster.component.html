@@ -1,0 +1,38 @@
+<form #commentForm1="ngForm" (ngSubmit)="register()">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Submit a Poster</h4>
+            <!-- <button class="btn btn-icon close-btn gtm-submit-comment-cancel-pg2" type="button" aria-label="Close" (click)="ActiveModal.dismiss('dismissed page')">
+              <i class="material-icons">
+                close
+              </i>
+            </button> -->
+            <button type="button" class="close" aria-label="Close" (click)="ActiveModal.dismiss('dismissed page')">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <fieldset>
+                <div class="form-group">
+                  <label class="control-label">What do you want to say (required)</label>
+                  <div class="form-control-container">
+                    <input required class="form-control" type="text" name="contentInput" placeholder="Anything"
+                      id="contentInput" [(ngModel)]="contentInput" autofocus />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label" >Location (required)</label>
+                  <input required class="form-control" type="text" name="locationInput" placeholder="IE: City, Province, Country etc."
+                    id="locationInput" [(ngModel)]="locationInput" autofocus />
+                </div>
+                <div class="form-group">
+                  <label class="control-label" >Your Picture (required)</label>
+                  <input required class="form-control" rows="8" name="pictureInput" placeholder= "picture url for now" id="pictureInput" [(ngModel)]="pictureInput" autofocus>
+                </div>
+            </fieldset>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="button" (click)="submitPoster()" [disabled]="!commentForm1.form.valid">Submit</button>
+          </div>
+        </div>
+</form>

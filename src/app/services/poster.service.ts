@@ -34,4 +34,19 @@ export class posterService {
   return allPoster;
 
   }
+  add(poster: Poster){
+    console.log('I am here', poster);
+    return this.api.addPoster(poster)
+    .map(res => {
+      if(res){
+        return new Poster(res);
+      }
+      return [];
+    })
+    .catch(() => {
+      this.errorFlag = true;
+      // if call fails, return null results
+      return of(null as Poster);
+    });
+  }
 }
