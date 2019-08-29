@@ -2,8 +2,10 @@ import { Component, OnInit, ChangeDetectorRef, OnDestroy, ChangeDetectionStrateg
 import { Poster } from 'src/app/models/poster'
 import { ActivatedRoute, Router} from  '@angular/router'
 import { Subject} from 'rxjs'
+import { AddPosterComponent } from './add-poster/add-poster.component'
 import { posterService } from '../services/poster.service'
 import { DialogService } from 'ng2-bootstrap-modal';
+import { NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap'
 import { ConfirmComponent } from 'src/app/confirm/confirm.component';
 import { ApiService } from '../services/api'
 import'rxjs/add/operator/takeUntil'
@@ -18,6 +20,7 @@ export class PosterComponent implements OnInit {
   public allPoster: Poster[] = null;
   private ngUnsubscribe: Subject<boolean> = new Subject<boolean>();
   result: any;
+  private ngbModal: NgbModalRef = null
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +29,7 @@ export class PosterComponent implements OnInit {
     private api: ApiService,
     private PosterService: posterService,
     private dialogService: DialogService,
+    private ngbService: NgbModal
 
   ) { }
 
@@ -63,5 +67,10 @@ export class PosterComponent implements OnInit {
           }
         }
       );
+  }
+
+  addPoster(){
+    this.ngbModal = this.ngbService.open(AddPosterComponent, { size: 'lg'});
+    console.log(this.ngbModal);
   }
 }
