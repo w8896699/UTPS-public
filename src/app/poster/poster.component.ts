@@ -1,14 +1,14 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { Poster } from 'src/app/models/poster'
-import { ActivatedRoute, Router} from  '@angular/router'
-import { Subject} from 'rxjs'
-import { AddPosterComponent } from './add-poster/add-poster.component'
-import { posterService } from '../services/poster.service'
+import { Poster } from 'src/app/models/poster';
+import { ActivatedRoute, Router} from  '@angular/router';
+import { Subject} from 'rxjs';
+import { AddPosterComponent } from './add-poster/add-poster.component';
+import { posterService } from '../services/poster.service';
 import { DialogService } from 'ng2-bootstrap-modal';
-import { NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap'
+import { NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import { ConfirmComponent } from 'src/app/confirm/confirm.component';
-import { ApiService } from '../services/api'
-import'rxjs/add/operator/takeUntil'
+import { ApiService } from '../services/api';
+import 'rxjs-compat/add/operator/takeUntil';
 
 
 @Component({
@@ -40,9 +40,9 @@ export class PosterComponent implements OnInit {
       this.result = item;
       console.log('item is', item);
       this.ChangeDetectorRef.detectChanges();
-    })
+    });
   }
-  delete(activity) {//replace this part with another seperate table component, this way suck
+  delete(activity) { // replace this part with another seperate table component, this way suck
     this.dialogService.addDialog(ConfirmComponent,
       {
         title: 'Delete Activity',
@@ -69,7 +69,7 @@ export class PosterComponent implements OnInit {
       );
   }
 
-  addPoster(){
+  addPoster() {
     this.ngbModal = this.ngbService.open(AddPosterComponent, { size: 'lg'});
     console.log(this.ngbModal);
   }
