@@ -9,14 +9,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmComponent } from './confirm/confirm.component'
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { posterService } from 'src/app/services/poster.service';
-import { AddPosterComponent } from './poster/add-poster/add-poster.component'
+import { AddPosterComponent } from './poster/add-poster/add-poster.component';
+import { FooterComponent } from './footer/footer.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     PosterComponent,
     ConfirmComponent,
-    AddPosterComponent
+    AddPosterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

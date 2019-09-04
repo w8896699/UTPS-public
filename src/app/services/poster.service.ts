@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { of } from 'rxjs';
 
-import { ApiService } from './api'
-import { Poster } from 'src/app/models/poster'
+import { ApiService } from './api';
+import { Poster } from 'src/app/models/poster';
 @Injectable({
   providedIn: 'root'
 })
 export class posterService {
   public errorFlag = false;
-
   constructor(
     private api: ApiService
   ) { }
 
-  show(){
+  show() {
     const allPoster = this.api.getAllPoster()
     .map(res => {
-      let allResults = <any>[];
+      const allResults = [] as any;
       res.forEach(item => {
         const r = new Poster(item);
         allResults.push(r);
@@ -31,14 +29,14 @@ export class posterService {
       // if call fails, return null results
       return of(null as Poster);
     });
-  return allPoster;
-
+    return allPoster;
   }
-  add(poster: Poster){
+
+  add(poster: Poster) {
     console.log('I am here', poster);
     return this.api.addPoster(poster)
     .map(res => {
-      if(res){
+      if (res) {
         return new Poster(res);
       }
       return [];
