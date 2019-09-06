@@ -10,7 +10,8 @@ import { ConfirmComponent } from './confirm/confirm.component'
 import { BootstrapModalModule } from 'ng2-bootstrap-modal';
 import { posterService } from 'src/app/services/poster.service';
 import { AddPosterComponent } from './poster/add-poster/add-poster.component';
-import { FooterComponent } from './footer/footer.component'
+import { FooterComponent } from './footer/footer.component';
+import { LoginComponent } from './login/login.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { FooterComponent } from './footer/footer.component'
     PosterComponent,
     ConfirmComponent,
     AddPosterComponent,
-    FooterComponent
+    FooterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { FooterComponent } from './footer/footer.component'
 entryComponents:[
   PosterComponent,
   ConfirmComponent,
-  AddPosterComponent
+  AddPosterComponent,
+  LoginComponent
 ],
   bootstrap: [AppComponent]
 })
