@@ -1,17 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { PosterComponent } from './poster/poster.component';
-import { HttpClientModule } from '@angular/common/http'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ConfirmComponent } from './confirm/confirm.component'
-import { BootstrapModalModule } from 'ng2-bootstrap-modal';
-import { posterService } from 'src/app/services/poster.service';
-import { AddPosterComponent } from './poster/add-poster/add-poster.component';
-import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component'
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {PosterComponent} from './poster/poster.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ConfirmComponent} from './confirm/confirm.component';
+import {BootstrapModalModule} from 'ng2-bootstrap-modal';
+import {posterService} from 'src/app/services/poster.service';
+import {AddPosterComponent} from './poster/add-poster/add-poster.component';
+import {FooterComponent} from './shared/footer/footer.component';
+import {LoginComponent} from './login/login.component';
+import {HeaderComponent} from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LoginComponent } from './login/login.component'
     ConfirmComponent,
     AddPosterComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -34,12 +36,13 @@ import { LoginComponent } from './login/login.component'
   providers: [
     posterService
   ],
-entryComponents:[
-  PosterComponent,
-  ConfirmComponent,
-  AddPosterComponent,
-  LoginComponent
-],
+  entryComponents: [
+    PosterComponent,
+    ConfirmComponent,
+    AddPosterComponent,
+    LoginComponent
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
