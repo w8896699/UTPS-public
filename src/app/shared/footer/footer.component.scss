@@ -1,0 +1,18 @@
+#footer {
+  position: absolute;
+  clear: both;
+  font-family: Josefin Sans;
+  margin-top: -60px;
+  width: 100%;
+  color: #b5b5b4;
+  font-size: 16px;
+  height: 60px;
+  text-align: center;
+  background-color: #1c1c1e;
+  overflow: hidden;
+
+  p {
+    line-height: 60px;
+    margin: auto;
+  }
+}

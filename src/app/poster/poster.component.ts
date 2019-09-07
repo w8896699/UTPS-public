@@ -86,6 +86,10 @@ export class PosterComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.ngbModal.componentInstance.passEntry.unsubscribe();
+    if (this.ngbModal && this.ngbModal.componentInstance) {
+      console.log(this.ngbModal.componentInstance);
+      this.ngbModal.componentInstance.passEntry.unsubscribe();
+    }
+
   }
 }

@@ -1,0 +1,15 @@
+<nav class="nav-bar navbar-fixed-top" id="nav-bar-wrap">
+  <div class="nav-mask"></div>
+  <div class="container">
+    <a class="navbar-brand" routerLink="">
+      <!--   <img src="" alt="nav-logo">-->
+      <i class="fa fa-empire">UTPS</i>
+    </a>
+    <div id="navbar">
+      <div class="nav-item"><a class="link" routerLink="/">Home</a></div>
+      <div class="nav-item" *ngIf="!login"><a class="link" routerLink="/login">Login</a></div>
+      <!--      <div class="nav-item" *ngIf="!login"><a class="link" routerLink="/register">Register</a></div>-->
+      <!--      <div class="nav-item" *ngIf="login"><a class="link" (click)="logout()">Log Out</a></div>-->
+    </div>
+  </div>
+</nav>
