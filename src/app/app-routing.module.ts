@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'poster',
+    component: PosterComponent
   }
 ];
 
