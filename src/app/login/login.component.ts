@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,EventEmitter, OnInit,Output } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../services/login.service';
 import { Router } from '@angular/router';
 
@@ -17,14 +18,13 @@ export class LoginComponent implements OnInit {
   loading = false;
   public error = '';
 
-
+  @Output() loginEvent: EventEmitter<any[] | boolean> = new EventEmitter();
   constructor(
-    private router: Router,
+    private ActiveModal: NgbActiveModal,
     private loginService: LoginService
   ) { }
 
   ngOnInit() {
-    console.log('I am here');
   }
   login() {
     this.loading = true;
@@ -33,10 +33,10 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.formModel)
       .takeUntil(this.ngUnsubscribe)
       .subscribe(result => {
-        console.log('result',result);
           if (result === true) {
             // login successful
-            this.router.navigate(['/']);
+            this.loginEvent.emit(result);
+            this.ActiveModal.dismiss('dismissed page');
           }
         },
         error => {

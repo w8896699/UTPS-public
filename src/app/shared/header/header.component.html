@@ -7,9 +7,10 @@
     </a>
     <div id="navbar">
       <div class="nav-item"><a class="link" routerLink="/">Home</a></div>
-      <div class="nav-item" *ngIf="!login"><a class="link" routerLink="/login">Login</a></div>
+      <div class="nav-item" *ngIf="!loginEvent"><a class="link" (click)="login()">Login</a></div>
+      <!-- <button class=" btn btn-light" *ngIf="!loginEvent" (click)="login()" type="button">Login</button> -->
       <!--      <div class="nav-item" *ngIf="!login"><a class="link" routerLink="/register">Register</a></div>-->
-      <!--      <div class="nav-item" *ngIf="login"><a class="link" (click)="logout()">Log Out</a></div>-->
+      <div class="nav-item" *ngIf="loginEvent"><a class="link" routerLink="/poster" (click)="logout()">Log Out</a></div>
     </div>
   </div>
 </nav>

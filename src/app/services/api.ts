@@ -35,10 +35,10 @@ export class ApiService {
       }
     }
     login(formModel){
-      console.log('formModel', formModel);
       const queryString = 'login';
       return this.http.post<LocalLoginResponse>(`${this.apiPath}/${queryString}`, { password: formModel.password,   })
     }
+    
     getAllPoster(): Observable<any[]> {
       const queryString = 'allposters';
       return this.http.get<Poster[]>(`${this.apiPath}/${queryString}`, {});

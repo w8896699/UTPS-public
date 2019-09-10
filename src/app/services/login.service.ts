@@ -27,4 +27,9 @@ export class LoginService {
         return false; // failed login
       })
   }
+  logout() {
+    // clear token + remove user from local storage to log user out
+    this.token = null;
+    window.localStorage.removeItem('currentUser');
+  }
 }
