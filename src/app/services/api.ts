@@ -1,11 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Poster } from 'src/app/models/poster';
 import {Observable} from 'rxjs';
+
+interface LocalLoginResponse {
+  _id: string;
+  title: string;
+  created_at: string;
+  startTime: string;
+  endTime: string;
+  state: boolean;
+  accessToken: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
+
 
 export class ApiService {
   public apiPath: string;
@@ -23,7 +34,11 @@ export class ApiService {
           break;
       }
     }
-
+    login(formModel){
+      const queryString = 'login';
+      return this.http.post<LocalLoginResponse>(`${this.apiPath}/${queryString}`, { password: formModel.password,   })
+    }
+    
     getAllPoster(): Observable<any[]> {
       const queryString = 'allposters';
       return this.http.get<Poster[]>(`${this.apiPath}/${queryString}`, {});
@@ -34,6 +49,15 @@ export class ApiService {
     }
     addPoster(poster: Poster) {
       const queryString = `allposters`;
-      return this.http.post<Poster>(`${this.apiPath}/${queryString}`, poster, {});
+      var userSession = JSON.parse(window.localStorage.getItem('currentUser')).token;
+      console.log('token', userSession);
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+          'Authorization': "Bearer " +userSession
+        })
+      };
+      console.log('token', httpOptions);
+      return this.http.post<Poster>(`${this.apiPath}/${queryString}`,poster, httpOptions);
     }
   }

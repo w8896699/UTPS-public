@@ -33,7 +33,6 @@ export class posterService {
   }
 
   add(poster: Poster) {
-    console.log('I am here', poster);
     return this.api.addPoster(poster)
     .map(res => {
       if (res) {
