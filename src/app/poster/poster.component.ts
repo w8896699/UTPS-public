@@ -8,6 +8,7 @@ import {DialogService} from 'ng2-bootstrap-modal';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmComponent} from 'src/app/confirm/confirm.component';
 import {ApiService} from '../services/api';
+import {LoginComponent} from 'src/app/login/login.component';
 import 'rxjs-compat/add/operator/takeUntil';
 
 
@@ -23,7 +24,7 @@ export class PosterComponent implements OnInit, OnDestroy {
 
   public addPosterEvent: EventEmitter<Poster>;
   public allPoster: Poster[] = null;
-
+  private loginEvent: boolean;
   private ngUnsubscribe: Subject<boolean> = new Subject<boolean>();
   private ngbModal: NgbModalRef = null;
 
@@ -76,12 +77,19 @@ export class PosterComponent implements OnInit, OnDestroy {
   }
 
   addPoster() {
+    this.loginEvent = localStorage.getItem('currentUser') !== null;
+    const browser_alert = document.getElementById('browser-alert');
+    if(!this.loginEvent){
+        browser_alert.classList.add('showForIEorEdge');
+      
+    }else{
     this.ngbModal = this.ngbService.open(AddPosterComponent, {size: 'lg'});
     this.ngbModal.componentInstance.addPosterEvent.subscribe((rec) => {
       if (rec) {
         this.result.push(rec);
       }
     });
+  }
     // console.log(this.ngbModal);
   }
 
