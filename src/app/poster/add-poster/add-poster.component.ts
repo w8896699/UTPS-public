@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Poster} from 'src/app/models/poster';
-import {posterService} from 'src/app/services/poster.service';
+import {PosterService} from 'src/app/services/poster.service';
 import {Router} from '@angular/router';
 
 
@@ -19,7 +19,7 @@ export class AddPosterComponent implements OnInit {
 
   constructor(
     private ActiveModal: NgbActiveModal,  // has to to here for html use.
-    private posterService: posterService,
+    private posterService: PosterService,
     private router: Router
   ) {
   }

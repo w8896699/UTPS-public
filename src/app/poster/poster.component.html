@@ -19,7 +19,7 @@
       <ng-container *ngFor="let item of result">
         <div class="title-container">
           <div>
-            "Name-placeholder"
+            {{item.author.userName}}
           </div>
           <span class="title-container__date">
                             {{item.dateAdded | date: 'longDate'}}

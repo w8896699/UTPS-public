@@ -3,7 +3,7 @@ import {Poster} from 'src/app/models/poster';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subject} from 'rxjs';
 import {AddPosterComponent} from './add-poster/add-poster.component';
-import {posterService} from '../services/poster.service';
+import {PosterService} from '../services/poster.service';
 import {DialogService} from 'ng2-bootstrap-modal';
 import {NgbModal, NgbModalRef} from '@ng-bootstrap/ng-bootstrap';
 import {ConfirmComponent} from 'src/app/confirm/confirm.component';
@@ -33,14 +33,14 @@ export class PosterComponent implements OnInit, OnDestroy {
     private router: Router,
     private ChangeDetectorRef: ChangeDetectorRef,
     private api: ApiService,
-    private PosterService: posterService,
+    private posterService: PosterService,
     private dialogService: DialogService,
     private ngbService: NgbModal
   ) {
   }
 
   ngOnInit() {
-    this.PosterService.show()
+    this.posterService.show()
       .takeUntil(this.ngUnsubscribe)
       .subscribe(item => {
         this.result = item;
@@ -78,18 +78,13 @@ export class PosterComponent implements OnInit, OnDestroy {
 
   addPoster() {
     this.loginEvent = localStorage.getItem('currentUser') !== null;
-    const browser_alert = document.getElementById('browser-alert');
-    if(!this.loginEvent){
-        browser_alert.classList.add('showForIEorEdge');
-      
-    }else{
+    // todo check if logedin
     this.ngbModal = this.ngbService.open(AddPosterComponent, {size: 'lg'});
     this.ngbModal.componentInstance.addPosterEvent.subscribe((rec) => {
       if (rec) {
-        this.result.push(rec);
+        this.result.unshift(rec);
       }
     });
-  }
     // console.log(this.ngbModal);
   }
 
