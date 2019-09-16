@@ -1,12 +1,10 @@
-export class User{
+export class User {
     _id: string;
     firstName: string;
     lastName: boolean;
     email: string;
     role: string;
     userName: string;
-    
-    
 
     constructor(obj?: any) {
         this._id = obj && obj._id || null;
