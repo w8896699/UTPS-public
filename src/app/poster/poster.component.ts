@@ -31,7 +31,7 @@ export class PosterComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private ChangeDetectorRef: ChangeDetectorRef,
+    private changeDetectorRef: ChangeDetectorRef,
     private api: ApiService,
     private posterService: PosterService,
     private dialogService: DialogService,
@@ -45,7 +45,7 @@ export class PosterComponent implements OnInit, OnDestroy {
       .subscribe(item => {
         this.result = item;
         console.log('item is', item);
-        this.ChangeDetectorRef.detectChanges();
+        this.changeDetectorRef.detectChanges();
       });
   }
 
@@ -66,7 +66,7 @@ export class PosterComponent implements OnInit, OnDestroy {
               .subscribe(
                 () => {
                   this.result.splice(this.result.indexOf(activity), 1);
-                  this.ChangeDetectorRef.detectChanges();
+                  this.changeDetectorRef.detectChanges();
                 },
                 error => {
                   console.log('error =', error);
@@ -78,7 +78,7 @@ export class PosterComponent implements OnInit, OnDestroy {
 
   addPoster() {
     this.loginEvent = localStorage.getItem('currentUser') !== null;
-    // todo check if logedin
+    // todo check if logged in
     this.ngbModal = this.ngbService.open(AddPosterComponent, {size: 'lg'});
     this.ngbModal.componentInstance.addPosterEvent.subscribe((rec) => {
       if (rec) {
