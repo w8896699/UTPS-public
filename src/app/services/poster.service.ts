@@ -8,7 +8,7 @@ import { Poster } from 'src/app/models/poster';
 @Injectable({
   providedIn: 'root'
 })
-export class posterService {
+export class PosterService {
   public errorFlag = false;
   constructor(
     private api: ApiService
@@ -17,6 +17,7 @@ export class posterService {
   show() {
     const allPoster = this.api.getAllPoster()
     .map(res => {
+      console.log(res);
       const allResults = [] as any;
       res.forEach(item => {
         const r = new Poster(item);

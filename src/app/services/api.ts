@@ -51,12 +51,11 @@ export class ApiService {
     }
     addPoster(poster: Poster) {
       const queryString = `allposters`;
-      var userSession = JSON.parse(window.localStorage.getItem('currentUser')).token;
-      console.log('token', userSession);
+      const userSession = JSON.parse(window.localStorage.getItem('currentUser')).token;
       const httpOptions = {
         headers: new HttpHeaders({
           'Content-Type':  'application/json',
-          'Authorization': "Bearer " +userSession
+          Authorization: 'Bearer ' + userSession
         })
       };
       console.log('token', httpOptions);
