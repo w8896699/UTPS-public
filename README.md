@@ -31,4 +31,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 `npm start` will run the project
 
+Try to implement minio
 
