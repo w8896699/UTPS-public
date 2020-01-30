@@ -58,7 +58,8 @@ export class ApiService {
           Authorization: 'Bearer ' + userSession
         })
       };
+      console.log('I am hererererere');
       console.log('token', httpOptions);
-      return this.http.post<Poster>(`${this.apiPath}/${queryString}`,poster, httpOptions);
+      return this.http.post<Poster>(`${this.apiPath}/${queryString}`, poster, httpOptions);
     }
   }

@@ -28,10 +28,6 @@ export class AddPosterComponent implements OnInit {
 
   }
 
-  register() {
-
-  }
-
   submitPoster() {
     // console.log('I have',this.contentInput );
     // console.log('I have',this.locationInput );
@@ -44,9 +40,9 @@ export class AddPosterComponent implements OnInit {
     console.log(newPoster);
     this.posterService.add(newPoster)
       .subscribe(item => {
-        this.router.navigate(['poster']); //i found it is uncessary, i keep it here just for reference of how to use navigate
+        // this.router.navigate(['poster']); //i found it is uncessary, i keep it here just for reference of how to use navigate
         this.addPosterEvent.emit(item);
-        // console.log('success');
+        console.log('success');
         this.ActiveModal.dismiss('dismissed page');
       });
   }

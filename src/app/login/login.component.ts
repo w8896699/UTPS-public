@@ -11,10 +11,18 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   private ngUnsubscribe: Subject<boolean> = new Subject<boolean>();
+  public currentPage = 1;
   public formModel = {
     username: '',
     password: ''
   };
+  public registerFrom = {
+    UsernameInput: '',
+    PasswordInput: '',
+    EmailInput: '',
+    nameInput: ''
+  };
+
   loading = false;
   public error = '';
 
@@ -45,6 +53,16 @@ export class LoginComponent implements OnInit {
           this.loading = false;
         }
       );
+  }
+
+  register(){
+    console.log('I am herererer', this.registerFrom);
+  }
+  private page_next() {
+    this.currentPage++;
+  }
+  private p2_back() {
+    this.currentPage--;
   }
 
 }
