@@ -25,7 +25,7 @@ export class LoginService {
           return true; // successful login
         }
         return false; // failed login
-      })
+      });
   }
   logout() {
     // clear token + remove user from local storage to log user out
