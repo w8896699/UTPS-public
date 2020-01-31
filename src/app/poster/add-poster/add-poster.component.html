@@ -1,4 +1,4 @@
-<form #commentForm1="ngForm" (ngSubmit)="register()">
+<form #commentForm1="ngForm">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title">Submit a Poster</h4>
@@ -32,7 +32,7 @@
             </fieldset>
           </div>
           <div class="modal-footer">
-            <button class="btn btn-primary" type="button" (click)="submitPoster()" [disabled]="!commentForm1.form.valid">Submit</button>
+            <button class="btn btn-primary" type="submit" (click)="submitPoster()" [disabled]="!commentForm1.form.valid">Submit</button>
           </div>
         </div>
 </form>

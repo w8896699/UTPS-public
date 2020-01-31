@@ -59,6 +59,10 @@ export class ApiService {
         })
       };
       console.log('token', httpOptions);
-      return this.http.post<Poster>(`${this.apiPath}/${queryString}`,poster, httpOptions);
+      return this.http.post<Poster>(`${this.apiPath}/${queryString}`, poster, httpOptions);
+    }
+    registerNewUser(registerFrom) {
+      const queryString = `user`;
+      return this.http.post(`${this.apiPath}/${queryString}`, registerFrom, {});
     }
   }

@@ -35,16 +35,16 @@ export class PosterService {
 
   add(poster: Poster) {
     return this.api.addPoster(poster)
-    .map(res => {
-      if (res) {
-        return new Poster(res);
-      }
-      return [];
-    })
-    .catch(() => {
-      this.errorFlag = true;
-      // if call fails, return null results
-      return of(null as Poster);
-    });
-  }
+          .map(res => {
+            if (res) {
+              return new Poster(res);
+            }
+            return [];
+          })
+          .catch(() => {
+            this.errorFlag = true;
+            // if call fails, return null results
+            return of(null as Poster);
+          });
+        }
 }
