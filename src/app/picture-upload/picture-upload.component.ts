@@ -2,6 +2,7 @@
 // reference http://www.advancesharp.com/blog/1218/angular-4-upload-files-with-data-and-web-api-by-drag-drop
 //
 import { Component, Input, Output, EventEmitter, HostListener, ElementRef, ViewChild } from '@angular/core';
+import {MatIconModule} from 'material-design-icons';
 
 @Component({
   selector: 'app-picture-upload',
