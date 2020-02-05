@@ -13,6 +13,8 @@ import {AddPosterComponent} from './poster/add-poster/add-poster.component';
 import {FooterComponent} from './shared/footer/footer.component';
 import {LoginComponent} from './login/login.component';
 import {HeaderComponent} from './shared/header/header.component';
+import { PictureUploadComponent } from './picture-upload/picture-upload.component';
+import { DragDropDirective } from './shared/utils/drag-drop.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import {HeaderComponent} from './shared/header/header.component';
     AddPosterComponent,
     FooterComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    PictureUploadComponent,
+    DragDropDirective
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ export class Poster {
     dateAdded: string;
     validation: boolean;
     location: string;
-    pictures: string;
+    pictures:  File;
     content: string;
     author: object; // 需要改，可以换用一个class来定义
 

@@ -11,10 +11,11 @@ import {Router} from '@angular/router';
   styleUrls: ['./add-poster.component.scss']
 })
 export class AddPosterComponent implements OnInit {
+  public picture: any;
   public contentInput: any;
   public locationInput: any;
   public pictureInput: any;
-
+  public uploadPictures: any;
   @Output() addPosterEvent: EventEmitter<any[] | Poster> = new EventEmitter();
 
   constructor(
@@ -25,13 +26,21 @@ export class AddPosterComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.uploadPictures = [];
   }
 
+  public addPictures(files) {
+    // if (files) { // safety check
+    console.log('wtfwtf', files);
+    console.log('baliabla', this.uploadPictures);
+      for (let i = 0; i < files.length; i++) {
+        console.log('caome to visit me! ', i, files.length);
+          this.uploadPictures.push(files);
+      }
+
+    }
+
   submitPoster() {
-    // console.log('I have',this.contentInput );
-    // console.log('I have',this.locationInput );
-    // console.log('I have',this.pictureInput );
     const newPoster = new Poster({
       location: this.locationInput,
       content: this.contentInput,
@@ -46,5 +55,4 @@ export class AddPosterComponent implements OnInit {
         this.ActiveModal.dismiss('dismissed page');
       });
   }
-
 }
