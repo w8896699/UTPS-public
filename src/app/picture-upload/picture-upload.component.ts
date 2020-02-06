@@ -10,16 +10,22 @@ import {MatIconModule} from 'material-design-icons';
   styleUrls: ['./picture-upload.component.scss']
 })
 export class PictureUploadComponent {
-  public files: any = [];
+  @Input()  files: Array<File>;
+  // @Output() filesChange = new EventEmitter();
+
   constructor() { }
 
-  uploadFile(event) {
-    for (let index = 0; index < event.length; index++) {
-      const element = event[index];
-      this.files.push(element.name);
+  uploadFile(incommingEventPicture) {
+    for (let index = 0; index < incommingEventPicture.length; index++) { // TODO : drop multi pictures
+      const element = incommingEventPicture[index];
+      this.files.push(element);
     }
+    // this.filesChange.emit(incommingEventPicture); //儿子可以改变爸爸的variable， 就不用emmiter了
   }
+
   deleteAttachment(index) {
+    console.log('check this222', this.files);
     this.files.splice(index, 1);
+    // this.filesChange.emit(this.files);
   }
 }

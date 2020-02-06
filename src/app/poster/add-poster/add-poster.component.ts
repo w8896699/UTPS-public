@@ -29,23 +29,13 @@ export class AddPosterComponent implements OnInit {
     this.uploadPictures = [];
   }
 
-  public addPictures(files) {
-    // if (files) { // safety check
-    console.log('wtfwtf', files);
-    console.log('baliabla', this.uploadPictures);
-      for (let i = 0; i < files.length; i++) {
-        console.log('caome to visit me! ', i, files.length);
-          this.uploadPictures.push(files);
-      }
-
-    }
-
   submitPoster() {
     const newPoster = new Poster({
       location: this.locationInput,
       content: this.contentInput,
-      pictures: this.pictureInput
+      pictures: this.uploadPictures
     });
+    console.log('hiahiabalibla', this.uploadPictures);
     console.log(newPoster);
     this.posterService.add(newPoster)
       .subscribe(item => {
