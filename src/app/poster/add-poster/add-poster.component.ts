@@ -3,6 +3,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {Poster} from 'src/app/models/poster';
 import {PosterService} from 'src/app/services/poster.service';
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -30,14 +31,20 @@ export class AddPosterComponent implements OnInit {
   }
 
   submitPoster() {
-    const newPoster = new Poster({
-      location: this.locationInput,
-      content: this.contentInput,
-      pictures: this.uploadPictures
-    });
-    console.log('hiahiabalibla', this.uploadPictures);
-    console.log(newPoster);
-    this.posterService.add(newPoster)
+    // const newPoster = new Poster({
+    //   location: this.locationInput,
+    //   content: this.contentInput,
+    //   picture: this.uploadPictures[0]
+    // });
+    let formData = new FormData();
+    formData.append('location', this.locationInput); // 以后可能需要弄成两个不同的apicall， 一个call传图片，一个传其他文字信息
+    formData.append('content', this.contentInput);
+    // this.uploadPictures.forEach(element => {
+     (this.uploadPictures[0]) && formData.append('picture', this.uploadPictures[0]);
+    // });
+    // console.log('hiahiababa', formData.getAll('location'));
+    // console.log('poster', formData);
+    this.posterService.add(formData)
       .subscribe(item => {
         // this.router.navigate(['poster']); //i found it is uncessary, i keep it here just for reference of how to use navigate
         this.addPosterEvent.emit(item);

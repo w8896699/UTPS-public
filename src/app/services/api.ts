@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Poster } from 'src/app/models/poster';
-import {Observable} from 'rxjs';
+import {Observable, throwError} from 'rxjs';
 
 interface LocalLoginResponse {
   _id: string;
@@ -49,20 +49,29 @@ export class ApiService {
       const queryString = `allposters/${poster._id}`;
       return this.http.delete<Poster>(`${this.apiPath}/${queryString}`, {});
     }
-    addPoster(poster: Poster) {
+
+    addPoster(poster: FormData) {
       const queryString = `allposters`;
       const userSession = JSON.parse(window.localStorage.getItem('currentUser')).token;
       const httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type':  'application/json',
+          // 'Content-Type':  'application/json',
           Authorization: 'Bearer ' + userSession
-        })
+        }),
+        mimeType: 'multipart/form-data'
       };
-      console.log('token', httpOptions);
-      return this.http.post<Poster>(`${this.apiPath}/${queryString}`, poster, httpOptions);
+      return this.http.post(`${this.apiPath}/${queryString}`, poster, httpOptions);
     }
+
+
     registerNewUser(registerFrom) {
       const queryString = `user`;
       return this.http.post(`${this.apiPath}/${queryString}`, registerFrom, {});
     }
+
+  handleError(error: any): Observable<any> {
+    const reason = error.message ? error.message : (error.status ? `${error.status} - ${error.statusText}` : 'Server error');
+    console.log('API error =', reason);
+    return throwError(error);
+  }
   }
