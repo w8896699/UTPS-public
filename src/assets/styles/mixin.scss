@@ -1,0 +1,18 @@
+@mixin flex-box() {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin flex-direction($values) {
+    -webkit-flex-direction: $values;
+    -ms-flex-direction: $values;
+    flex-direction: $values;
+}
+
+@mixin flex($values) {
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}

@@ -3,7 +3,7 @@ export class Poster {
     dateAdded: string;
     validation: boolean;
     location: string;
-    pictures: string;
+    picture:  File;
     content: string;
     author: object; // 需要改，可以换用一个class来定义
 
@@ -13,7 +13,7 @@ export class Poster {
         this.dateAdded = obj && obj.dateAdded || null;
         this.content = obj && obj.content || null;
         this.location = obj && obj.location || null;
-        this.pictures = obj && obj.pictures || null;
+        this.picture = obj && obj.picture || null;
         this.validation = obj && obj.validation || null;
         this.author = obj  && obj.author || undefined;
     }

@@ -25,10 +25,15 @@
                   <input required class="form-control" type="text" name="locationInput" placeholder="IE: City, Province, Country etc."
                     id="locationInput" [(ngModel)]="locationInput" autofocus />
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label class="control-label" >Your Picture (required)</label>
                   <input required class="form-control" rows="8" name="pictureInput" placeholder= "picture url for now" id="pictureInput" [(ngModel)]="pictureInput" autofocus>
-                </div>
+                </div> -->
+
+          <app-picture-upload  [files]="uploadPictures" ></app-picture-upload>
+          <!-- <div *ngIf="documents?.length === 0">
+            <p>No attached files.</p>
+          </div> -->
             </fieldset>
           </div>
           <div class="modal-footer">

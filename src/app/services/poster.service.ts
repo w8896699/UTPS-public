@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { of } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 import { ApiService } from './api';
 import { Poster } from 'src/app/models/poster';
@@ -17,7 +18,6 @@ export class PosterService {
   show() {
     const allPoster = this.api.getAllPoster()
     .map(res => {
-      console.log(res);
       const allResults = [] as any;
       res.forEach(item => {
         const r = new Poster(item);
@@ -33,18 +33,14 @@ export class PosterService {
     return allPoster;
   }
 
-  add(poster: Poster) {
-    return this.api.addPoster(poster)
-          .map(res => {
-            if (res) {
-              return new Poster(res);
-            }
-            return [];
-          })
-          .catch(() => {
-            this.errorFlag = true;
-            // if call fails, return null results
-            return of(null as Poster);
-          });
+  add(formData: FormData) {
+    return this.api.addPoster(formData)
+      .map((res: any) => {
+        if (res) {
+          const d = res;
+          return d ? new Poster(d) : null;
+        }
+      })
+      .catch(this.api.handleError);
         }
 }
