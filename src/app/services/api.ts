@@ -55,10 +55,9 @@ export class ApiService {
       const userSession = JSON.parse(window.localStorage.getItem('currentUser')).token;
       const httpOptions = {
         headers: new HttpHeaders({
-          // 'Content-Type':  'application/json',
+          // 'Content-Type':  'application/json',//用了formData就不用这一行，formData会自己定义分割线和content-type（javascript是这样其他的好好像不是）
           Authorization: 'Bearer ' + userSession
         }),
-        mimeType: 'multipart/form-data'
       };
       return this.http.post(`${this.apiPath}/${queryString}`, poster, httpOptions);
     }
