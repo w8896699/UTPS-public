@@ -2,6 +2,13 @@
   "rulesDirectory": [
     "node_modules/codelyzer"
   ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+],
+"language": "typescript", "autoFix": true,
   "rules": {
     "no-trailing-whitespace": [true, "always"],
     "space-before-function-paren": [true, "never"],
@@ -31,7 +38,6 @@
     "member-access": false,
     "member-ordering": [
       true,
-      "static-before-instance",
       "variables-before-functions"
     ],
     "no-arg": true,
