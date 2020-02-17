@@ -22,7 +22,7 @@ export class AddPosterComponent implements OnInit {
   constructor(
     private ActiveModal: NgbActiveModal,  // has to to here for html use.
     private posterService: PosterService,
-    private router: Router
+    private router: Router,
   ) {
   }
 
@@ -46,10 +46,12 @@ export class AddPosterComponent implements OnInit {
     // console.log('poster', formData);
     this.posterService.add(formData)
       .subscribe(item => {
-        // this.router.navigate(['poster']); //i found it is uncessary, i keep it here just for reference of how to use navigate
-        this.addPosterEvent.emit(item);
+
+        // this.router.navigate(['poster']); // i found it is uncessary, i keep it here just for reference of how to use navigate
+        // this.addPosterEvent.emit(item);
         console.log('success');
         this.ActiveModal.dismiss('dismissed page');
+        window.location.reload();
       });
   }
 }
