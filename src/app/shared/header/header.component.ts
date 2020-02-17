@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.loginEvent = localStorage.getItem('currentUser') !== null; // check if user logged in
-    // console.log('wtf',this.loginEvent);
+    console.log('wtf',this.loginEvent);
   }
 
   logout() {
